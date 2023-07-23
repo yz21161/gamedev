@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+@export var health : float = 10000
+var player_alive = true
 
 @export var nSPEED : float = 300.0
 @export var JUMP_VELOCITY : float = -250
@@ -14,6 +18,13 @@ var direction :Vector2 = Vector2.ZERO
 var was_in_air : bool = false
 
 func _physics_process(delta):
+	
+	enemy_attack()
+	if health <= 0:
+		player_alive = false
+		health = 0
+		print("player has died")
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -67,3 +78,26 @@ func land():
 func _on_animated_sprite_2d_animation_finished():
 	if(animated_sprite.animation == "Jump End Animation"):
 		animation_locked = false
+
+func player():
+	pass
+
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = true
+
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+		
+	
+func enemy_attack():
+	if enemy_in_attack_range and enemy_attack_cooldown == true:
+		health = health - 10
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print (health)
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
