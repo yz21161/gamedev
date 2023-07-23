@@ -101,3 +101,14 @@ func enemy_attack():
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
+
+
+func _on_area_2d_body_entered(body):
+	print("entered")
+	if body.name == "Mage":
+		position = Vector2(1,2)
+
+
+func _on_freefall_body_entered(body):
+	if body.name == "Mage":
+		velocity.y = gravity -500

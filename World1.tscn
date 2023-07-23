@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://do71uwwomw7ot"]
+[gd_scene load_steps=33 format=3 uid="uid://do71uwwomw7ot"]
 
 [ext_resource type="Script" path="res://Mage.gd" id="1_bia6u"]
 [ext_resource type="Texture2D" uid="uid://bk81gla5gd43a" path="res://Idle-Sheet.png" id="2_mcrnw"]
@@ -374,6 +374,12 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mgppl")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otw2r"]
+size = Vector2(2832.88, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1phf0"]
+size = Vector2(2673, 20)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Mage" type="CharacterBody2D" parent="."]
@@ -410,4 +416,18 @@ layer_0/tile_data = PackedInt32Array(196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 1
 [node name="Test_enemy" parent="." instance=ExtResource("6_ukedd")]
 position = Vector2(143, -16)
 
+[node name="deadzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deadzone"]
+position = Vector2(828.563, 665)
+shape = SubResource("RectangleShape2D_otw2r")
+
+[node name="freefall" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="freefall"]
+position = Vector2(777, 193)
+shape = SubResource("RectangleShape2D_1phf0")
+
 [connection signal="animation_finished" from="Mage/AnimatedSprite2D" to="Mage" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="deadzone" to="Mage" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="freefall" to="Mage" method="_on_freefall_body_entered"]
