@@ -20,7 +20,7 @@ var direction :Vector2 = Vector2.ZERO
 var was_in_air : bool = false
 
 func _physics_process(delta):
-	attack()
+#	attack()
 	enemy_attack()
 	if health <= 0:
 		player_alive = false
@@ -50,6 +50,7 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	update_animation()
+	attack()
 	update_facing_direction()
 	
 func update_animation():
@@ -99,17 +100,17 @@ func enemy_attack():
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
-
+#
 func attack():
 	if Input.is_action_just_pressed("attack"):
 		if direction.x > 0:
-			$AnimatedSprite2D.flip_h = false
-			$AnimatedSprite2D.play("Attack Animarion")
-			$damage_dealing_cooldown.start()
+			animated_sprite.flip_h = false
+			animated_sprite.play("justAttack")
+#			$damage_dealing_cooldown.start()
 		elif direction.x < 0:
-			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("Attack Animarion")
-			$damage_dealing_cooldown.start()
+			animated_sprite.flip_h = true
+			animated_sprite.play("justAttack")
+#			$damage_dealing_cooldown.start()
 		print_debug("attack")
 		global.player_current_attack = true
 #		attack_in_progress = true
@@ -119,3 +120,14 @@ func _on_damage_dealing_cooldown_timeout():
 	$damage_dealing_cooldown.stop()
 	global.player_current_attack = false
 #	attack_in_progress = false
+
+
+func _on_deadzone_body_entered(body):
+	print("entered")
+	if body.name == "Mage":
+		position = Vector2(1,2)
+
+
+func _on_freefall_body_entered(body):
+	if body.name == "Mage":
+		velocity.y = gravity -500
