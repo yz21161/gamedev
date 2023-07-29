@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tdxucj1cxnpd"
-path="res://.godot/imported/melee_attack.png-0ca1b29dc425016119feb2fc6840759e.ctex"
+uid="uid://bi81d3l0a8c4d"
+path="res://.godot/imported/Slimeton_Hands.png-456f4d05a940d2be9781651e37ef82d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://melee_attack.png"
-dest_files=["res://.godot/imported/melee_attack.png-0ca1b29dc425016119feb2fc6840759e.ctex"]
+source_file="res://Slimeton_Hands.png"
+dest_files=["res://.godot/imported/Slimeton_Hands.png-456f4d05a940d2be9781651e37ef82d9.ctex"]
 
 [params]
 

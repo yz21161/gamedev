@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://dxxeip62t4fyn"]
+
+[ext_resource type="Texture2D" uid="uid://bi81d3l0a8c4d" path="res://Slimeton_Hands.png" id="1_vowbi"]
+[ext_resource type="Script" path="res://left_hand.gd" id="1_wotax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1efwq"]
+radius = 17.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hlts"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuhel"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsb40"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q22c"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtbke"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4fp0"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a43p7"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv6gx"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a40ys"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54p78"]
+atlas = ExtResource("1_vowbi")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18p04"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hlts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuhel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsb40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q22c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtbke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a43p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv6gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a40ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54p78")
+}],
+"loop": true,
+"name": &"Left_hand_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qh46"]
+radius = 249.201
+
+[node name="Left_hand" type="CharacterBody2D"]
+script = ExtResource("1_wotax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1efwq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_18p04")
+animation = &"Left_hand_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8qh46")
